@@ -68,8 +68,8 @@ mean_std_complete_data <- complete_data_set[ , mean_std_data== TRUE]
 data_with_activity_names = merge(mean_std_complete_data, activitylabels, by='activityId', all.x=TRUE)
 
 # Tidy Data Set
-tidy_data_set <- aggregate(. ~subjectId + activityId, data_with_activity_names, mean)
+tidy_data_set <- aggregate(. ~subjectId + activityType, data_with_activity_names, mean)
 tidy_data_set <- tidy_data_set[order(tidy_data_set$subjectId, tidy_data_set$activityId),]
 
 #The last step is to write the ouput to a text file 
-write.table(tidy_data_set, "tidy_data_set1.txt", row.name=FALSE)
+write.table(tidy_data_set, "tidy_data_set.txt", row.name=FALSE)
