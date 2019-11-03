@@ -37,6 +37,13 @@ subject_test = read.table(file.path(datafiles, "test", "subject_test.txt"),heade
 # Load the features data
 features = read.table(file.path(datafiles, "features.txt"),header = FALSE)
 features[,2] <- gsub("-", "_", gsub("[()]", "", features[,2]))
+features[,2] <- gsub("^f", "frequencyDomain", features[,2])
+features[,2] <- gsub("^t", "timeDomain", features[,2])
+features[,2] <- gsub("Acc", "Accelerometer", features[,2])
+features[,2] <- gsub("Gyro", "Gyroscope", features[,2])
+features[,2] <- gsub("Mag", "Magnitude", features[,2])
+features[,2] <- gsub("Freq", "Frequency", features[,2])
+
 # Load activity labels data
 activitylabels = read.table(file.path(datafiles, "activity_labels.txt"),header = FALSE)
 
